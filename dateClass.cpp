@@ -85,6 +85,24 @@ class Date{
 		int GetYear()const;
 		int GetMonth()const;
 		int GetDay()const;
+		
+		   Date operator+ (int d) const {
+			int newDay = day + d;
+			return Date(newDay, month, year);
+			}
+
+		Date operator- (int d) const{
+			int newDay = day - d;
+			return Date(newDay, month, year);
+		}
+
+		Date& operator+= (int d){
+			day += d;
+			
+			Normalize();
+
+        return *this;
+		}
 };
 
 int Date::GetYear()const{
@@ -115,7 +133,7 @@ Date::Date(int d) {
 
 int main()
 {
-	Date d(3, 4, 132);
+	Date d( 5343);
 	std::cout << d.GetYear() << " ";
 	std::cout << d.GetMonth() << " ";
 	std::cout << d.GetDay() << std::endl;
